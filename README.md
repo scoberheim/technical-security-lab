@@ -86,7 +86,7 @@ The lab implements several security controls designed to reduce the risk of unau
 - Windows 11 provides a target endpoint for security testing
 - Testing is performed within the isolated lab environment
 
-**Virtual Machines**
+# Virtual Machines
 
 | VM / Asset                  | Role                            | Category | Security / GRC Purpose                                      |
 | --------------------------- | ------------------------------- | -------- | ----------------------------------------------------------- |
