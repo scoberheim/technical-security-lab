@@ -9,25 +9,23 @@
 - [Asset Management](#asset-management)
 - [GRC Projects](#grc-projects)
 
-This repository documents the design, implementation and ongoing development of my technical cybersecurity homelab.
+This repository documents how I designed, built and run my cybersecurity homelab.
 
-The lab provides a controlled environment for developing practical skills in **security architecture, network segmentation, system administration, vulnerability management, security controls and risk assessment**.
+I use the lab to practise security architecture, network segmentation, system administration, vulnerability management and risk assessment. It runs on **Proxmox VE** with an **OPNsense** firewall, and the virtual machines stand in for common enterprise systems and a security testing platform. Testing happens on an isolated network so it can't affect my home network.
 
-The environment is built using **Proxmox VE** and **OPNsense**, with multiple virtual machines representing common enterprise systems and security testing platforms. The lab is intentionally segmented to allow security testing and experimentation while protecting the primary network.
+The lab is also the environment behind my [GRC case study](https://github.com/scoberheim/Risk-Assessment-For-Small-Technology-Environment), where I carry out an asset register, risk assessment and control mapping against it.
 
-The lab also serves as the technical foundation for my **Governance, Risk and Compliance (GRC) portfolio**, providing a realistic environment in which to apply concepts such as asset identification, risk assessment, security controls, network security and business impact.
+### Lab objectives
 
-### Lab Objectives
+* Build practical cybersecurity and infrastructure skills
+* Document the network architecture and security controls
+* Set up network segmentation and firewall policies
+* Keep an inventory of lab assets, classified by criticality
+* Run security tests in a controlled environment
+* Apply risk assessment and security governance to a real setup
+* Keep clear technical documentation
 
-* Develop practical cybersecurity and infrastructure security skills
-* Understand and document network architecture and security controls
-* Implement network segmentation and firewall policies
-* Maintain an inventory and classification of lab assets
-* Conduct security testing in a controlled environment
-* Apply risk assessment and security governance principles
-* Produce professional technical documentation suitable for a cybersecurity portfolio
-
-The lab is continuously evolving as new security and GRC projects are developed.
+I add to the lab as I take on new security and GRC projects.
 
 ---
 
@@ -46,9 +44,7 @@ The lab is continuously evolving as new security and GRC projects are developed.
 
 ### Installation
 
-Proxmox VE was installed directly onto the physical server hardware, providing a dedicated Type 1 hypervisor platform for hosting the cybersecurity lab.
-
-A bootable USB installation media was created using Rufus and the Proxmox VE ISO. Installing Proxmox directly onto the hardware provides dedicated resources for the virtualised lab environment and allows the network, storage and virtual machines to be centrally managed.
+I installed Proxmox VE directly onto the server hardware as a Type 1 hypervisor, using a bootable USB made with Rufus and the Proxmox VE ISO. Running it on bare metal gives the lab dedicated resources and lets me manage the network, storage and virtual machines from one place.
 
 
 ### Network Architecture
@@ -65,7 +61,7 @@ A bootable USB installation media was created using Rufus and the Proxmox VE ISO
 
 # Security Controls
 
-The lab implements several security controls designed to reduce the risk of unauthorised access and limit the impact of security incidents.
+These controls reduce the risk of unauthorised access and limit the damage if something goes wrong.
 
 ### Network Segmentation
 - Primary LAN separated from Cyber Lab environment
@@ -101,10 +97,11 @@ The lab implements several security controls designed to reduce the risk of unau
 
 ---
 # Network Diagram
-This diagram illustrates the architecture of my cybersecurity homelab, built using Proxmox VE and OPNsense. The environment is designed to provide hands-on experience with network security, system administration, virtualization, and security operations concepts.
-Internet connectivity is provided through an OPNsense virtual firewall, with separate WAN (vmbr1) and LAN (vmbr0) bridges configured within Proxmox. The primary LAN provides connectivity to physical devices and wireless clients, while an isolated Cyber Lab network (VLAN 30) hosts security testing systems including Kali Linux, Windows 11 and Ubuntu virtual machines.
+The diagram shows how the homelab is built with Proxmox VE and OPNsense.
 
-Network segmentation and firewall policies are used to control traffic between environments, allowing safe experimentation with security tools and techniques while protecting the primary network. This lab serves as a platform for developing practical skills in firewall administration, network architecture, vulnerability assessment, incident investigation, and Microsoft security technologies.
+Internet traffic comes in through an OPNsense virtual firewall, with separate WAN (vmbr1) and LAN (vmbr0) bridges configured in Proxmox. The primary LAN connects physical devices and wireless clients. An isolated Cyber Lab network (VLAN 30) holds the security testing machines: Kali Linux, Windows 11 and Ubuntu.
+
+Firewall policies control traffic between the two networks, so I can try out security tools and techniques without putting the primary network at risk. I use the lab to practise firewall administration, network architecture, vulnerability assessment, incident investigation and Microsoft security tools.
 
 
 <img width="641" height="501" alt="Network Diagram drawio" src="https://github.com/user-attachments/assets/2bbe3e9d-68f4-4414-9042-1fc7a46794da" />
@@ -112,7 +109,7 @@ Network segmentation and firewall policies are used to control traffic between e
 ---
 # Asset Management
 
-The lab maintains an asset inventory to support risk assessment and security management.
+I keep an asset inventory for the lab to support risk assessment and security management. The full asset register is in the [GRC case study](https://github.com/scoberheim/Risk-Assessment-For-Small-Technology-Environment/blob/main/asset-register.md).
 
 | Asset | Type | Environment | Criticality |
 |---|---|---|---|
@@ -122,3 +119,9 @@ The lab maintains an asset inventory to support risk assessment and security man
 | Windows 11 | Endpoint | Lab | Medium |
 | Ubuntu | Server | Lab | Medium |
 | Kali Linux | Security Testing | Lab | Low |
+
+---
+# GRC Projects
+
+- [Information security risk assessment and risk register](https://github.com/scoberheim/Risk-Assessment-For-Small-Technology-Environment): 16 risks assessed using NIST SP 800-30, including AI-related risks
+- [Control mapping to NIST CSF 2.0](https://github.com/scoberheim/Risk-Assessment-For-Small-Technology-Environment/blob/main/control-mapping.md), with ISO/IEC 27001:2022 Annex A in progress
